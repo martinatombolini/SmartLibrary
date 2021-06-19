@@ -1,0 +1,29 @@
+<div align="center" class="container" style="width: 50%">
+  <h1>Add a new book</h1>
+
+<%= form_with scope: :book, url: books_path, local: true do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title, class: "form-control" %>
+  </p>
+ 
+  <p>
+    <%= form.label :author %><br>
+    <%= form.text_field :author, class: "form-control" %>
+  </p>
+
+  <p>
+    <%= form.label :notes %><br>
+    <%= form.text_area :notes, class: "form-control" %>
+  </p>
+
+  <p>
+    <%= form.label :isbn %><br>
+    <%= form.text_field :isbn, class: "form-control" %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+</div>
+<% end %>

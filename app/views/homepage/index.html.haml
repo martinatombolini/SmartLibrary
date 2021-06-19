@@ -27,5 +27,12 @@
 %div{:align => "center"} 
   %h1 BOOKSHELF
 
-- if @user
-  = button_to "Logout", logout_path, method: :delete
+%table
+  - @books.each do |book|
+    %td
+      %td=image_tag 'book.png', style: 'height:20%'
+      
+      %td= book.title
+      
+      %td= link_to 'Show', book_path(book)
+
