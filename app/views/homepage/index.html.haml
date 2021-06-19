@@ -1,2 +1,31 @@
-%h1 Homepage
- #{link_to 'Login', login_path}
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  .container-fluid
+    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarSupportedContent", "data-bs-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      %ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        %li.nav-item.dropdown
+          %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}
+            Login
+          %ul.dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+            %li
+              %a.dropdown-item{:href => "#"}
+                Registrati come
+                %b biblioteca
+            %li
+              %a.dropdown-item{:href => "#"}
+                Registrati come
+                %b lettore
+            %li
+              %hr.dropdown-divider/
+            %li
+              %a.dropdown-item{:href => "/login"} Esegui il login
+      %form.d-flex
+        %input.form-control.me-2{"aria-label" => "Search", :placeholder => "Search a book", :type => "search"}/
+        %button.btn.btn-outline-dark{:type => "submit"} Search
+
+%div{:align => "center"} 
+  %h1 BOOKSHELF
+
+- if @user
+  = button_to "Logout", logout_path, method: :delete

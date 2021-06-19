@@ -1,23 +1,31 @@
-%h2 Login
-=form_tag login_path, :method => :post do
+%div{:align => "center", class:"container", :style => "width: 50%"} 
+ %h1 Login
+ =form_tag login_path, :method => :post do
  
- =label :user, :username, 'Username'
- %br
- =text_field :user, :username
+  =label :user, :username, 'Username'
+  =text_field :user, :username, class: "form-control", :style => "width: 60%"
  
+  %br 
+
+  =label :user, :password,'Password'
+  =password_field :user, :password, class: "form-control", :style => "width: 50%"
+
+  %br 
+
+  =submit_tag 'Login', class: "btn btn-outline-dark"
+
+  %br
+  %br
+
+
+  - if flash[:loginerror]
+   .alert.alert-danger{:role => "alert", :style => "width: 50%"}
+    = 'Username or password incorrect'
+
  %br 
- %br
+ <span>Don't have an account? </span> 
+ #{link_to 'Sign up', root_path}
 
- =label :user, :password,'Password'
- %br
- =password_field :user, :password
 
- %br 
- %br
-
- =submit_tag 'Submit'
-
- %br
-
- - if flash[:loginerror]
-  = 'Username or password incorrect'
+<span aria-hidden="true">&laquo;</span>
+#{link_to 'Back to homepage', root_path}
