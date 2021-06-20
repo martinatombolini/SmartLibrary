@@ -1,18 +1,60 @@
-%p
-  %strong Title:
-  = @book.title
-%p
-  %strong Author:
-  = @book.author
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  .container-fluid
+    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarSupportedContent", "data-bs-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse.justify-content-between
+      %a.navbar-brand{:href => "/"}
+        %span{"aria-hidden" => "true"}> «
+        Back to homepage
+      %div
+        %a.navbar-brand{:href => "#"} My profile
+        = image_tag "user.png", style:"width:50px"
 
-%p
-  %strong Notes:
-  = @book.notes
+.container
+  .row
+    .col
+      = image_tag 'black_book.png',style:"width:100%"
+    .col-8
+      %br
+      %br
+      .card{:align => "center", :style => "width: 100%"}
+        %br
+        %h1 Details
+        %hr
+        
 
-%p
-  %strong ISBN:
-  = @book.isbn
+        %p
+          %strong Title:
+          = @book.title
+        %p
+          %strong Author:
+          = @book.author
 
+        %p
+          %strong Notes:
+          = @book.notes
 
-= link_to 'Edit', edit_book_path(@book)
-= link_to 'Back to homepage', root_path
+        %p
+          %strong ISBN:
+          = @book.isbn
+
+        %p
+          %strong Status:
+          = "available/borrowed"
+
+        %p
+          %strong Location:
+          = "library name + library address"
+
+        .container 
+          .row 
+            
+            .col 
+              = button_to 'Edit', edit_book_path(@book), :method => :get, class: "btn btn-primary"
+            .col
+              = button_to 'Delete book', book_path(@book), :method => :delete, data: { confirm: 'Are you sure?' },  class: "btn btn-primary"
+          %br
+          .row 
+            = button_to 'Ask for reservation', root_path, class: "btn btn-primary"
+        
+        %br
