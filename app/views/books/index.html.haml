@@ -1,4 +1,5 @@
 %h1 Listing Books
+= link_to 'New book', new_book_path
 %table
   %tr
     %th Title
@@ -13,3 +14,7 @@
       %td= book.notes
       %td= book.isbn
       %td= link_to 'Show', book_path(book)
+      %td= link_to 'Edit', edit_book_path(book)
+      %td= link_to 'Destroy', book_path(book), :method => :delete, data: { confirm: 'Are you sure?' }
+
+=link_to 'Back to homepage', root_path
