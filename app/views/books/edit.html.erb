@@ -1,6 +1,36 @@
-<div align="center" class="container" style="width: 50%">
-    <h1>Edit Book</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid"> 
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+      <a class="navbar-brand" href="/"><span aria-hidden="true">&laquo;</span>Back to homepage</a>
+      <div>
+      <a class="navbar-brand" href="#">My profile</a>
+      
+      
+      <%= image_tag "user.png", style:"width:50px"%>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= image_tag 'black_book.png',style:"width:100%"%>
+    </div>
+    <div class="col-8">
+    <br>
+    <br>
+    <div align="center" class="card" style="width: 100%">
+        <h1>Edit Book</h1>
  
-<%= render 'form' %>
+        <%= render 'form' %>
+    </div>
+  </div>
+</div>
+
  
 <%= link_to 'Back', books_path %>
