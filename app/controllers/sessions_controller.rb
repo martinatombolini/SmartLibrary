@@ -7,8 +7,13 @@ class SessionsController < ApplicationController
             flash[:loginerror]=true
             redirect_to login_path
             else
-                session[:user]=@current_user[0][:name]
-                redirect_to root_path
+                session[:user]=@current_user[0][:username]
+                redirect_to books_path
             end
+    end
+
+    def destroy
+        session.delete(:user)
+        redirect_to login_path
     end
 end

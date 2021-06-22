@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get '/login' => 'libraries#show'
   post '/login' => 'sessions#create'
+  post '/logout' => 'sessions#destroy'
 
   resources :books
 end
