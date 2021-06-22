@@ -19,7 +19,7 @@
             %li
               %hr.dropdown-divider/
             %li
-              %a.dropdown-item{:href => "/login"} Esegui il login
+              %a.dropdown-item{:href => "/users/sign_in"} Esegui il login
       %form.d-flex
         %input.form-control.me-2{"aria-label" => "Search", :placeholder => "Search a book", :type => "search"}/
         %button.btn.btn-outline-dark{:type => "submit"} Search
@@ -37,3 +37,10 @@
       %td= link_to 'Show', book_path(book)
 
 =link_to 'Book list', books_path
+
+- if current_user
+  = link_to 'Logout', destroy_user_session_path, method: :delete
+- else
+  = link_to 'Login', user_session_path
+
+  = link_to "Sign in with Google",user_google_oauth2_omniauth_authorize_path 
