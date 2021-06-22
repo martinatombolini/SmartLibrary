@@ -1,12 +1,5 @@
 class BooksController < ApplicationController
-    before_action :check_user_logged_in
 
-    def check_user_logged_in
-        if session[:user]==nil then
-            redirect_to login_path
-        end
-    end
-    
     def index
         @books = Book.all
     end

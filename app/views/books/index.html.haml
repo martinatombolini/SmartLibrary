@@ -18,7 +18,3 @@
       %td= link_to 'Destroy', book_path(book), :method => :delete, data: { confirm: 'Are you sure?' }
 
 =link_to 'Back to homepage', root_path
-%br
-%br
-= form_tag logout_path, :method => :post do 
-  = submit_tag 'Logout'
