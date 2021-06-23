@@ -3,9 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, :omniauth_providers => [:facebook]
-  devise :omniauthable, omniauth_providers: [:google_oauth2]
-def self.from_omniauth(auth) 
+         :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
+  acts_as_user :roles => [ :reader, :library ]
+         def self.from_omniauth(auth) 
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
@@ -29,6 +29,20 @@ def self.from_omniauth(auth)
       user = User.create( email: data['email'],password: Devise.friendly_token[0,20])
      end
     user
+  end
+
+  def is_library?
+    return (self.roles_mask & 1) == 1
+  end
+
+  def set_library
+    self.roles_mask = (self.roles_mask | 1)
+    self.save
+  end
+
+  def unset_library
+    self.roles_mask = 0
+    self.save
   end
 
 end

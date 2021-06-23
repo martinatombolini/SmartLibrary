@@ -49,9 +49,11 @@
         .container 
           .row 
             
-            .col 
+            .col
+            - if can? :edit, Book
               = button_to 'Edit', edit_book_path(@book), :method => :get, class: "btn btn-primary"
             .col
+            - if can? :delete, Book
               = button_to 'Delete book', book_path(@book), :method => :delete, data: { confirm: 'Are you sure?' },  class: "btn btn-primary"
           %br
           .row 

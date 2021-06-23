@@ -1,5 +1,6 @@
 %h1 Listing Books for user #{session[:user]}
-= link_to 'New book', new_book_path
+- if can? :create, Book
+  = link_to 'New book', new_book_path
 %table
   %tr
     %th Title
@@ -14,7 +15,8 @@
       %td= book.notes
       %td= book.isbn
       %td= link_to 'Show', book_path(book)
-      %td= link_to 'Edit', edit_book_path(book)
-      %td= link_to 'Destroy', book_path(book), :method => :delete, data: { confirm: 'Are you sure?' }
-
-=link_to 'Back to homepage', root_path
+      - if can? :edit, Book
+        %td= link_to 'Edit', edit_book_path(book)
+      - if can? :destroy, Book
+        %td= link_to 'Destroy', book_path(book), :method => :delete, data: { confirm: 'Are you sure?' }
+      =link_to 'Back to homepage', root_path
