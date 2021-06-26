@@ -1,4 +1,4 @@
 Canard::Abilities.for(:library) do
-  can [:create, :destroy, :update], Book
+  can [:create, :update, :destroy], Book
   
 end

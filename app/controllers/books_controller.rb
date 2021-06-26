@@ -15,12 +15,11 @@ class BooksController < ApplicationController
     end
 
     def edit
-        authorize! :action, Book, message: "You are not authorized"
         @book = Book.find(params[:id])
     end
 
     def create
-        authorize! :action, Book, message: "You are not authorized"
+        authorize! :create, Book, message: "You are not authorized!"
         @book = Book.new(book_params)
  
         if @book.save
@@ -31,7 +30,7 @@ class BooksController < ApplicationController
     end
 
     def update
-        authorize! :action, Book, message: "You are not authorized"
+        authorize! :destroy, Book, message: "You are not authorized"
         @book = Book.find(params[:id])
        
         if @book.update(book_params)
@@ -42,7 +41,7 @@ class BooksController < ApplicationController
     end
 
     def destroy
-        authorize! :action, Book, message: "You are not authorized"
+        authorize! :destroy, Book, message: "You are not authorized"
         @book = Book.find(params[:id])
         @book.destroy
        

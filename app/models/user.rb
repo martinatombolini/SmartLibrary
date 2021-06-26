@@ -1,11 +1,12 @@
 class User < ApplicationRecord
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
-  acts_as_user :roles => [ :reader, :library ]
-         def self.from_omniauth(auth) 
+  acts_as_user :roles => [ :library, :reader]
+  def self.from_omniauth(auth) 
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
@@ -41,8 +42,21 @@ class User < ApplicationRecord
   end
 
   def unset_library
-    self.roles_mask = 0
+    self.roles_mask = (self.roles_mask & 1)
     self.save
   end
 
+  def is_reader?
+    return (self.roles_mask & 2) == 2
+  end
+
+  def set_reader
+    self.roles_mask = (self.roles_mask | 2)
+    self.save
+  end
+
+  def unset_reader
+    self.roles_mask = (self.roles_mask & 1)
+    self.save
+  end
 end
