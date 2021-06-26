@@ -11,4 +11,13 @@ class ApplicationController < ActionController::Base
         attributes = [:email, :roles_mask]
         devise_parameter_sanitizer.permit(:sign_up, keys: attributes)
     end
+
+    def after_sign_in_path_for(resource_or_scope)
+        if current_user.roles_mask==nil then
+            edit_user_registration_path
+        else
+            root_path
+        end
+    end
+
 end
