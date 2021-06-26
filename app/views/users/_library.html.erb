@@ -9,22 +9,23 @@
 
     
 
-      <div class="card" style="width: 100%">
-          Name: <%= current_user.name %>
+      <div class="card" align="center" style="width: 100%">
           <br>
-          Email: <%= current_user.email %>
+          <p>Name: <%= current_user.name %></p>
           <br>
-          Username: <%= current_user.username %>
+          <p>Email: <%= current_user.email %></p>
           <br>
-          Address: <%= current_user.address %>
+          <p>Username: <%= current_user.username %></p>
+          <br>
+          <p>Address: <%= current_user.address %></p>
           <br><br>
-          <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'float-left' %>
+          <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark' %>
       </div>
     </div>
   </div>
 
   <hr>
-  <%= button_to 'Add a book', new_book_path, method: :get %>
+  <%= button_to 'Add a book', new_book_path, method: :get, class: "btn btn-outline-dark"%>
 
   <br><br>
   Available books:
