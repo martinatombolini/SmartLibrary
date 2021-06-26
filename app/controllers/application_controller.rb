@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
         if current_user.roles_mask==nil then
             edit_user_registration_path
         else
-            root_path
+            @user
         end
     end
 
