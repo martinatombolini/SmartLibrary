@@ -1,0 +1,33 @@
+<div class="container">
+  <h2> Reader profile </h2>
+    <div class="row">
+      <div class="col">
+        <%= image_tag 'user.png',style:"width:60%"%>
+      </div>
+      <div class="col-8">
+    
+
+    
+
+      <div class="card" style="width: 100%">
+          Name: <%= current_user.name %>
+          <br>
+          Email: <%= current_user.email %>
+          <br>
+          Username: <%= current_user.username %>
+          <br>
+          Address: <%= current_user.address %>
+          <br><br>
+          <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'float-left' %>
+      </div>
+    </div>
+  </div>
+
+
+  <br><br>
+  Reserved books:
+  <br><br>
+
+
+  Booking requests:
+  <br><br>

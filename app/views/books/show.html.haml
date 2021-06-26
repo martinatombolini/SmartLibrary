@@ -7,7 +7,7 @@
         %span{"aria-hidden" => "true"}> «
         Back to homepage
       %div
-        %a.navbar-brand{:href => "#"} My profile
+        = link_to "My Profile", current_user 
         = image_tag "user.png", style:"width:50px"
 
 .container
@@ -48,12 +48,11 @@
 
         .container 
           .row 
-            
-            .col
             - if can? :edit, Book
+              .col
               = button_to 'Edit', edit_book_path(@book), :method => :get, class: "btn btn-primary"
-            .col
             - if can? :delete, Book
+              .col
               = button_to 'Delete book', book_path(@book), :method => :delete, data: { confirm: 'Are you sure?' },  class: "btn btn-primary"
           %br
           .row 
