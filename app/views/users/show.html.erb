@@ -1,0 +1,39 @@
+<div class="container">
+<h2> Library profile </h2>
+  <div class="row">
+    <div class="col">
+      <%= image_tag 'library.png',style:"width:60%"%>
+    </div>
+    <div class="col-8">
+    
+
+    
+
+    <div class="card" style="width: 100%">
+        Name: <%= current_user.name %>
+        <br>
+        Email: <%= current_user.email %>
+        <br>
+        Username: <%= current_user.username %>
+        <br>
+        Address: <%= current_user.address %>
+        <br><br>
+        <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'float-left' %>
+    </div>
+  </div>
+</div>
+
+<hr>
+<%= button_to 'Add a book', new_book_path, method: :get %>
+
+<br><br>
+Available books:
+<br><br>
+
+
+Borrowed books:
+<br><br>
+
+
+Pending requests:
+<br><br>
