@@ -1,14 +1,4 @@
-%nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  .container-fluid
-    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarSupportedContent", "data-bs-toggle" => "collapse", :type => "button"}
-      %span.navbar-toggler-icon
-    #navbarSupportedContent.collapse.navbar-collapse.justify-content-between
-      %a.navbar-brand{:href => "/"}
-        %span{"aria-hidden" => "true"}> «
-        Back to homepage
-      %div
-        = link_to "My Profile", current_user 
-        = image_tag "user.png", style:"width:50px"
+= render 'books/navbar' 
 
 .container
   .row
@@ -48,12 +38,16 @@
 
         .container 
           .row 
-            - if can? :edit, Book
+            
+            .col
+              - if can? :edit, Book
+                
+                = button_to 'Edit', edit_book_path(@book), :method => :get, class: "btn btn-primary"
+              %br
               .col
-              = button_to 'Edit', edit_book_path(@book), :method => :get, class: "btn btn-primary"
-            - if can? :delete, Book
-              .col
-              = button_to 'Delete book', book_path(@book), :method => :delete, data: { confirm: 'Are you sure?' },  class: "btn btn-primary"
+              - if can? :delete, Book
+                
+                = button_to 'Delete book', book_path(@book), :method => :delete, data: { confirm: 'Are you sure?' },  class: "btn btn-primary"
           %br
           .row 
             = button_to 'Ask for reservation', root_path, class: "btn btn-primary"

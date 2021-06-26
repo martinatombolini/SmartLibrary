@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid"> 
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+      
+      <div>
+      <div class="dropdown">
+      <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      <%= image_tag "user.png", style:"width:50px" %>
+      Account
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><%= link_to 'Profile', current_user%></li>
+        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+      </ul>
+      </div>
+
+    </div>
+    <a class="navbar-brand" href="/"><span aria-hidden="true">&laquo;</span>Back to homepage</a>
+  </div>
+</nav>
