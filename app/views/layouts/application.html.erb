@@ -13,27 +13,27 @@
 
   <body>
     <%= yield %>
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-primary" role="alert" width="60%">
+        Notification: <%= msg %>
+      </div>
+    <% end %>
     <hr>
     <% if user_signed_in? %>
     Logged in as <%= current_user.email%> [<%= link_to 'Logout', 
     destroy_user_session_path, :method => :delete%>]
     <% end %>
 
-    <% flash.each do |type, msg| %>
-      <div>
-        Notification: <%= msg %>
-      </div>
-    <% end %>
-
     <% if not current_user.nil? %>
-    <hr>
-    <b> Roles: </b>
-        <% if current_user.is_library?%>
-          Library 
-        <%end%>
-        <% if current_user.is_reader? %>
-          Reader 
-        <% end %>
+      <hr>
+      <div class="alert alert-success" role="alert" width="60%">
+      <b> Roles: </b>
+          <% if current_user.is_library?%>
+            Library 
+          <%end%>
+         <% if current_user.is_reader? %>
+            Reader 
+          <% end %>
     <%end%>
 
 
