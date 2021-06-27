@@ -27,9 +27,20 @@
 
 
   <br><br>
-  Reserved books:
+  <b>Reserved books:</b>
   <br><br>
 
 
-  Booking requests:
-  <br><br>
+  <b>Booking requests:</b>
+  <table>
+  <% @reservation.each do |book| %>  
+    <tr>
+    <% if book.user_id==current_user.id and book.confirmed==0%>  
+      <% @current_book=Book.where(:id => book.book_id) %>  
+      <li>Titolo: <%= @current_book[0][:title] %>
+      Note: <%= book.comments %></li>
+    <% end %>
+    </tr>
+    <br><br>
+  </table>
+  <% end %>
