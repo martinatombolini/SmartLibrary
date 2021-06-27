@@ -8,6 +8,7 @@ class BooksController < ApplicationController
 
     def show
         @book = Book.find(params[:id])
+        @user = User.all
     end
 
     def new
@@ -21,6 +22,7 @@ class BooksController < ApplicationController
     def create
         authorize! :create, Book, message: "You are not authorized!"
         @book = Book.new(book_params)
+        @book.owner=current_user.id
  
         if @book.save
             redirect_to @book
@@ -32,6 +34,7 @@ class BooksController < ApplicationController
     def update
         authorize! :destroy, Book, message: "You are not authorized"
         @book = Book.find(params[:id])
+        @book.owner=current_user.id
        
         if @book.update(book_params)
           redirect_to @book
@@ -50,6 +53,6 @@ class BooksController < ApplicationController
 
     private
         def book_params
-            params.require(:book).permit(:title, :author, :notes, :isbn)
+            params.require(:book).permit(:title, :author, :notes, :isbn, :owner=>current_user.id)
         end
 end

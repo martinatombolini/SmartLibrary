@@ -34,7 +34,8 @@
 
         %p
           %strong Location:
-          = "library name + library address"
+          =User.find(@book.owner).address
+          
 
         .container 
           .row 
