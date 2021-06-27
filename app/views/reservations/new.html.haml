@@ -1,0 +1,8 @@
+%h2 Ask reservation
+= form_tag book_reservations_path, :method => :post do
+
+    = label :reservation, :comments, 'Comment'
+    = text_field :reservation, :comments
+
+    <br/><br/>
+    = submit_tag 'Ask reservation'
