@@ -6,6 +6,10 @@ class BooksController < ApplicationController
         @books = Book.all
     end
 
+    def search 
+        @books = Book.where("title LIKE?", "%" + params[:q] + "%")
+    end
+
     def show
         @book = Book.find(params[:id])
     end

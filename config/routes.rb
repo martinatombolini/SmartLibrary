@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'reservations/new'
   get 'reservations/create'
   get 'reservations/destroy'
+  get 'search', to: "books#search"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'homepage#index'
 
