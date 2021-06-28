@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   root to: 'homepage#index'
 
 
-
   resources :books do
     resource :reservations, only: [:new, :create, :destroy]
   end 

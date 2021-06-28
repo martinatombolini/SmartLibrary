@@ -28,13 +28,45 @@
   <%= button_to 'Add a book', new_book_path, method: :get, class: "btn btn-outline-dark"%>
 
   <br><br>
-  Available books:
-  <br><br>
+  <b>Available books:</b>
+  <table>
+  <% @book.each do |book| %>  
+    <tr>
+    <% if book.status==nil and book.owner==current_user.id%>  
+      <li>Titolo: <%= book.title %></li>
+    <% end %>
+    </tr>
+  <% end %>
+  </table>
+  <br>
+
+  <b>Borrowed books:</b>
+  <table>
+  <% @book.each do |book| %>  
+    <tr>
+    <% if book.status==1 and book.owner==current_user.id%>  
+      <li>Titolo: <%= book.title %></li>
+    <% end %>
+    </tr>
+  <% end %>
+  </table>
+  <br>
 
 
-  Borrowed books:
-  <br><br>
-
-
-  Pending requests:
-  <br><br>
+  <b>Pending requests:</b>
+  <tr>
+  <table>
+  <% @reservation.each do |reservation| %>  
+    <tr>
+    <% @current_book=Book.where(:id => reservation.book_id) %>
+    <% if @current_book[0][:owner]==current_user.id and reservation.confirmed==0%>  
+      <li>Titolo: <%= @current_book[0][:title] %>
+      Note: <%= reservation.comments %> 
+      <%= button_to 'Accept', user_path(current_user.id), method: :post, class: "btn btn-outline-dark" %>
+      <%= button_to 'Decline', user_path(current_user.id), method: :post, class: "btn btn-outline-dark" %></li>
+    <% end %>
+    </tr>
+    <br><br>
+  <% end %>
+  <br>
+  </table>
