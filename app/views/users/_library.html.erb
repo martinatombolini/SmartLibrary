@@ -19,7 +19,7 @@
           <br>
           <p>Address: <%= current_user.address %></p>
           <br><br>
-          <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark' %>
+          <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark' %> <br>
       </div>
     </div>
   </div>
@@ -60,10 +60,12 @@
     <tr>
     <% @current_book=Book.where(:id => reservation.book_id) %>
     <% if @current_book[0][:owner]==current_user.id and reservation.confirmed==0%>  
-      <li>Titolo: <%= @current_book[0][:title] %>
-      Note: <%= reservation.comments %> 
-      <%= button_to 'Accept', is_confirmed_reservation_path , :method => :put, class: "btn btn-outline-dark"%>
-      <%= button_to 'Decline', is_deleted_reservation_path , :method => :put, class: "btn btn-outline-dark" %>
+      <div class="row">
+        <div class="col"> Titolo: <%= @current_book[0][:title] %> </div>
+        <div class="col">Note: <%= reservation.comments %> </div>
+        <div class="col"> <%= button_to 'Accept', is_confirmed_reservation_path , :method => :put, class: "btn btn-success"%></div>
+        <div class="col"> <%= button_to 'Decline', is_deleted_reservation_path , :method => :put, class: "btn btn-danger" %></div>
+      </div>
     <% end %>
     </tr>
     <br><br>

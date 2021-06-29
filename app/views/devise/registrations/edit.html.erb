@@ -1,4 +1,5 @@
 <%= render 'devise/navbar' %>
+<div align="center" class="container" style="width: 70%">
 
 <h2>Update user <%= resource_name.to_s.humanize %></h2>
 
@@ -7,28 +8,26 @@
 
   <div class="field">
     <%= f.label :role%><br />
-    <%= f.select :roles_mask, [['library',1], ['reader',2]] %>
+    <%= f.select :roles_mask, [['library',1], ['reader',2]], class:"form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
+    <%= f.text_field :username, autofocus: true, autocomplete: "username", class:"form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: false, autocomplete: "name" %>
+    <%= f.text_field :name, autofocus: false, autocomplete: "name", class:"form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :address %>
     <em>(required if you are a library)</em><br />
-    <%= f.text_field :address, autofocus: false, autocomplete: "address" %>
+    <%= f.text_field :address, autofocus: false, autocomplete: "address", class:"form-control"%>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Update", class:"btn btn-outline-dark" %>
   </div>
 <% end %>
-
-<%= link_to "Back", :back %>

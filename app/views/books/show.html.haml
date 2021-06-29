@@ -51,7 +51,9 @@
                 = button_to 'Delete book', book_path(@book), :method => :delete, data: { confirm: 'Are you sure?' },  class: "btn btn-primary"
           %br
           .row 
-            = button_to 'Ask for reservation', new_book_reservations_path(@book), class: "btn btn-primary", :method => :get
+            
+            - if current_user.is_reader?
+              = button_to 'Ask for reservation', new_book_reservations_path(@book), class: "btn btn-primary", :method => :get
         
         %br
 
