@@ -41,7 +41,7 @@
     </tr>
   <% end %>
   </table>
-
+  <br><hr><br>
 
   <b>Booking requests:</b>
   <table>
@@ -57,3 +57,19 @@
     </tr>
   <% end %>
   </table>
+  <br><hr><br>
+
+  <b>Rejected requests:</b>
+  <table>
+  <% @reservation.each do |reservation| %>  
+    <tr>
+    <% if reservation.user_id==current_user.id and reservation.confirmed==2%>  
+      <% @current_book=Book.where(:id => reservation.book_id) %>  
+      <div class="row"> 
+        <div class="col"> Titolo: <%= @current_book[0][:title] %> </div>
+        <div class="col">Note: <%= reservation.comments %> </div>
+    </tr>
+    <%end%>
+  <% end %>
+  </table>
+  <br><br>
