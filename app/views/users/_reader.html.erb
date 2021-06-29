@@ -28,19 +28,30 @@
 
   <br><br>
   <b>Reserved books:</b>
-  <br><br>
+  <table>
+  <% @reservation.each do |reservation| %>  
+    <tr>
+    <% if reservation.user_id==current_user.id and reservation.confirmed==1%>  
+      <% @current_book=Book.where(:id => reservation.book_id) %>  
+      <div class="row">
+        <div class="col"> Titolo: <%= @current_book[0][:title] %> </div>
+        <div class="col">Note: <%= reservation.comments %> </div>
+    <% end %>
+    </tr>
+  <% end %>
+  </table>
 
 
   <b>Booking requests:</b>
   <table>
-  <% @reservation.each do |book| %>  
+  <% @reservation.each do |reservation| %>  
     <tr>
-    <% if book.user_id==current_user.id and book.confirmed==0%>  
-      <% @current_book=Book.where(:id => book.book_id) %>  
-      <li>Titolo: <%= @current_book[0][:title] %>
-      Note: <%= book.comments %></li>
+    <% if reservation.user_id==current_user.id and reservation.confirmed==0%>  
+      <% @current_book=Book.where(:id => reservation.book_id) %>  
+      <div class="row">
+        <div class="col"> Titolo: <%= @current_book[0][:title] %> </div>
+        <div class="col">Note: <%= reservation.comments %> </div>
     <% end %>
     </tr>
-    <br><br>
   <% end %>
   </table>

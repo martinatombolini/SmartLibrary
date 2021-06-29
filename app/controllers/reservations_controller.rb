@@ -9,7 +9,7 @@ class ReservationsController < ApplicationController
     @reservation = @book.reservations.create!(:comments =>
     params[:reservation][:comments],:user_id=> user_id, :confirmed => 0)
       
-    redirect_to books_path
+    redirect_to @current_user
       
   end
 
