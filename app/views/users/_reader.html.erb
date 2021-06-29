@@ -36,6 +36,7 @@
       <div class="row">
         <div class="col"> Titolo: <%= @current_book[0][:title] %> </div>
         <div class="col">Note: <%= reservation.comments %> </div>
+        <div class="col"> <%= button_to 'Delete', reservation, method: :delete, class: 'btn btn-danger' %> </div>
     <% end %>
     </tr>
   <% end %>
@@ -51,6 +52,7 @@
       <div class="row">
         <div class="col"> Titolo: <%= @current_book[0][:title] %> </div>
         <div class="col">Note: <%= reservation.comments %> </div>
+        <div class="col"> <%= button_to 'Cancel', reservation, method: :delete, class: 'btn btn-danger' %> </div>
     <% end %>
     </tr>
   <% end %>

@@ -14,6 +14,9 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
+    @reservation = Reservation.find(params[:id])
+    @reservation.destroy
+    redirect_to current_user
   end
 
   def is_confirmed
