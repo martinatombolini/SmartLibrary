@@ -15,4 +15,10 @@ class ReservationsController < ApplicationController
 
   def destroy
   end
+
+  def is_confirmed
+    @reservation= Reservation.find(params[:id])
+    @reservation.update(confirmed: 1)
+    redirect_to books_path
+  end
 end

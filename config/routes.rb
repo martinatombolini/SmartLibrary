@@ -12,4 +12,8 @@ Rails.application.routes.draw do
   end 
   devise_for :users, :controllers => { :omniauth_callbacks =>"users/omniauth_callbacks", :registrations => "users/registrations"}
   resources :users, only: [:show]
+
+  resources :reservations do
+    put :is_confirmed, on: :member
+  end
 end

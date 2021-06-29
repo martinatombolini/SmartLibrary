@@ -62,7 +62,7 @@
     <% if @current_book[0][:owner]==current_user.id and reservation.confirmed==0%>  
       <li>Titolo: <%= @current_book[0][:title] %>
       Note: <%= reservation.comments %> 
-      <%= button_to 'Accept', user_path(current_user.id), method: :post, class: "btn btn-outline-dark" %>
+      <%= button_to 'Accept', is_confirmed_reservation_path , :method => :put %>
       <%= button_to 'Decline', user_path(current_user.id), method: :post, class: "btn btn-outline-dark" %></li>
     <% end %>
     </tr>
