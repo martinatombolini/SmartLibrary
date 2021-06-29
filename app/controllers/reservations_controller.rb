@@ -21,4 +21,10 @@ class ReservationsController < ApplicationController
     @reservation.update(confirmed: 1)
     redirect_to books_path
   end
+
+  def is_deleted
+    @reservation= Reservation.find(params[:id])
+    @reservation.update(confirmed: 2)
+    redirect_to books_path
+  end
 end

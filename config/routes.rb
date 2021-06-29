@@ -15,5 +15,6 @@ Rails.application.routes.draw do
 
   resources :reservations do
     put :is_confirmed, on: :member
+    put :is_deleted, on: :member
   end
 end
