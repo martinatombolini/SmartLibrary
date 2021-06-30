@@ -1,4 +1,13 @@
 <%= render 'users/navbar' %>
+<br>
+
+<div class="container">
+<% flash.each do |type, msg| %>
+      <div class="alert alert-primary" role="alert" width="60%">
+        Notification: <%= msg %>
+      </div>
+<% end %>
+</div>
 
 <% if current_user.is_library?%>
 <%= render 'library' %>

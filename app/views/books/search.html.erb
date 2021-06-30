@@ -1,18 +1,67 @@
-<h1> Search results </h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <% if !current_user %>
+            <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="navbarDropdown" role="button">
+              Login
+            </a>
+            <ul aria-labelledby="navbarDropdown" class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="/users/sign_up">Sign up</a>
+              </li>
+              <li>
+                <hr class="dropdown-divider"/>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/users/sign_in">Sign in</a>
+              </li>
+            </ul>
+          <% else %>
+            <div class="row">
+              <div class="col">
+                <%= image_tag "user.png", style:"width:50px" %>
+              </div>
+              <div class="col">
+                <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="navbarDropdown" role="button">Account</a>
+                <ul aria-labelledby="navbarDropdown" class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item">
+                      <%= link_to 'Profile', current_user %>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item">
+                      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          <% end %>
+        </li>
+      </ul>
+      
+    </div>
+    <a class="navbar-brand" href="/"><span aria-hidden="true">&laquo;</span>Back to homepage</a>
+  </div>
+</nav>
+
+
+<h1> Found results: </h1>
 
 <% @books.each do |book| %>
-  <tr>
-    <td>
+  <div class= "row">
+    <div class="col-3">
+      Title:
       <%= book.title %>
-    </td>
-    <td>
-      <%= book.author %>
-    </td>
-    <td>
-      <%= book.notes %>
-    </td>
-    <td>
-      <%= book.isbn %>
-    </td>
-  </tr>
+    </div>
+    <div class="col">
+      <%= button_to 'Show details', book_path(book), :method => :get, class:"btn btn-primary"%>
+    </div>
+    <br><br>
 <% end %>
