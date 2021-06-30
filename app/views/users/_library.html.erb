@@ -63,8 +63,8 @@
       <div class="row">
         <div class="col"> Titolo: <%= @current_book[0][:title] %> </div>
         <div class="col">Note: <%= reservation.comments %> </div>
-        <div class="col"> <%= button_to 'Accept', is_confirmed_reservation_path , :method => :put, class: "btn btn-success"%></div>
-        <div class="col"> <%= button_to 'Decline', is_deleted_reservation_path , :method => :put, class: "btn btn-danger" %></div>
+        <div class="col"> <%= button_to 'Accept', is_confirmed_reservation_path(reservation) , :method => :put, class: "btn btn-success"%></div>
+        <div class="col"> <%= button_to 'Decline', is_deleted_reservation_path(reservation) , :method => :put, class: "btn btn-danger" %></div>
       </div>
     <% end %>
     </tr>
