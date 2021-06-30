@@ -62,9 +62,9 @@
               - @current_reservation=Reservation.where(:user_id => current_user.id, :book_id => @book.id)
               -if @current_reservation.length!=0
                 -if @current_reservation[0][:confirmed]!=2
-                  = button_to 'Cancella prenotazione', reservation_path(@current_reservation[0][:id]), method: :delete, class: 'btn btn-danger'
+                  = button_to 'Delete reservation', reservation_path(@current_reservation[0][:id]), method: :delete, class: 'btn btn-danger'
               -else
-                = button_to 'Prenota', new_book_reservations_path(@book), class: "btn btn-primary", :method => :get
+                = button_to 'Ask for reservation', new_book_reservations_path(@book), class: "btn btn-primary", :method => :get
         
         %br
 

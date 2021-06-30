@@ -1,8 +1,15 @@
-%h2 Ask reservation
-= form_tag book_reservations_path, :method => :post do
+= render 'books/navbar'
 
-    = label :reservation, :comments, 'Comment'
-    = text_field :reservation, :comments
+%br
 
-    <br/><br/>
-    = submit_tag 'Ask reservation'
+.container{align: "center", style: "width: 50%"}
+    %h2 Ask reservation
+    %br
+    = form_tag book_reservations_path, :method => :post do
+
+        = label :reservation, :comments, 'Comment'
+        = text_field :reservation, :comments, class:"form_control"
+
+        %br
+        %br
+        = submit_tag 'Ask reservation', class:"btn btn-success"
