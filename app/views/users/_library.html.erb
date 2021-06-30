@@ -57,9 +57,10 @@
       <div class="row">
         <div class="col"> <li>Titolo: <%= @current_book[0][:title] %> </div>
         <div class="col"> Da: <%= User.find(@current_book[0][:owner]).username %> </div>
-        <% if reservation.comments!=nil %>
+        <% if reservation.comments!="" %>
           <div class="col">Note: <%= reservation.comments %> </div>
-        <% end %></li>
+        <% end %>
+        <div class="col"><%= button_to book_path(@current_book[0][:id]), class: 'btn bg-transparent', method: :get do%><i class="fa fa-info-circle fa-lg"></i><%end%></li></div></li>
       </div>
     <% end %>
     </tr>
@@ -82,7 +83,9 @@
       <div class="row">
         <div class="col"> <li> Titolo: <%= @current_book[0][:title] %> </div>
         <div class="col"> Da: <%= User.find(@current_book[0][:owner]).username %>  </div>
-        <div class="col">Note: <%= reservation.comments %> </li></div>
+         <% if reservation.comments!="" %>
+          <div class="col">Note: <%= reservation.comments %> </div>
+        <% end %>
         <div class="col"> <%= button_to 'Accept', is_confirmed_reservation_path(reservation) , :method => :put, class: "btn btn-success"%></div>
         <div class="col"> <%= button_to 'Decline', is_deleted_reservation_path(reservation) , :method => :put, class: "btn btn-danger" %></div>
       </div>
