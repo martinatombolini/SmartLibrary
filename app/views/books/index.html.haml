@@ -1,6 +1,6 @@
 = render 'books/navbar'
 
-%h1 Listing Books for user #{session[:user]}
+%h1 Listing Books 
 - if can? :destroy, Book
   = link_to 'New book', new_book_path
 - else
@@ -32,4 +32,3 @@
           %td= link_to 'Destroy', book_path(book), :method => :delete, data: { confirm: 'Are you sure?' }
       - else
         %td= 'Destroy'
-      =link_to 'Back to homepage', root_path

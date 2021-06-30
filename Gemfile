@@ -12,6 +12,7 @@ gem 'omniauth-google-oauth2'
 gem 'canard', '~> 0.6.2.pre'
 gem 'rolify'
 gem 'font-awesome-rails'
+gem 'pagy'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.2'

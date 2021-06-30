@@ -9,9 +9,11 @@
 %div{:align => "center"} 
   %h1 BOOKSHELF
 
+
+
 %table
   - @books.each do |book|
-    %td
+    %tr 
       %td=image_tag 'book.png', style: 'height:20%'
       
       %td= book.title
@@ -20,3 +22,6 @@
       - else
         -if current_user.is_reader?
           %td= link_to 'Show', book_path(book)
+
+.pagination.justify-content-evenly
+  = raw pagy_bootstrap_nav(@pagy)

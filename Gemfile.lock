@@ -207,6 +207,7 @@ GEM
       oauth2 (~> 1.4)
       omniauth (>= 1.9, < 3)
     orm_adapter (0.5.0)
+    pagy (4.10.1)
     protobuf-cucumber (3.10.8)
       activesupport (>= 3.2)
       middleware
@@ -339,6 +340,7 @@ DEPENDENCIES
   omniauth (~> 1.9.1)
   omniauth-facebook
   omniauth-google-oauth2
+  pagy
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.3, >= 6.1.3.2)
