@@ -32,23 +32,35 @@
   <table>
   <% @book.each do |book| %>  
     <tr>
-    <% if book.status==nil and book.owner==current_user.id%>  
-      <li>Titolo: <%= book.title %></li>
+    
+    <% @current_book=Reservation.where(:book_id => book.id) %>  
+    <% if @current_book.length==0 or @current_book[0][:confirmed]!=1 and book.owner==current_user.id%>  
+      <div class="row">
+        <div class="col"> Titolo: <%= book.title %> </div>
+      </div>
     <% end %>
     </tr>
+    <br><br>
   <% end %>
+  <br>
   </table>
   <br><hr><br>
 
   <b>Borrowed books:</b>
   <table>
-  <% @book.each do |book| %>  
+  <% @reservation.each do |reservation| %>  
     <tr>
-    <% if book.status==1 and book.owner==current_user.id%>  
-      <li>Titolo: <%= book.title %></li>
+    <% @current_book=Book.where(:id => reservation.book_id) %>
+    <% if @current_book[0][:owner]==current_user.id and reservation.confirmed==1%>  
+      <div class="row">
+        <div class="col"> Titolo: <%= @current_book[0][:title] %> </div>
+        <div class="col">Note: <%= reservation.comments %> </div>
+      </div>
     <% end %>
     </tr>
+    <br><br>
   <% end %>
+  <br>
   </table>
   <br><hr><br>
 
