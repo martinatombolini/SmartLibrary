@@ -22,12 +22,12 @@ class ReservationsController < ApplicationController
   def is_confirmed
     @reservation= Reservation.find(params[:id])
     @reservation.update(confirmed: 1)
-    redirect_to books_path
+    redirect_to current_user
   end
 
   def is_deleted
     @reservation= Reservation.find(params[:id])
     @reservation.update(confirmed: 2)
-    redirect_to books_path
+    redirect_to current_user
   end
 end
