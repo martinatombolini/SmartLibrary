@@ -29,12 +29,14 @@
 
 
   <br><br>
-  <b>Reserved books:</b>
+  <b>Libri prenotati:</b>
   <div class="section clearfix" style="background-color: #f8f9fa;">
   <table>
+  <% @counter1=0 %>  
   <% @reservation.each do |reservation| %>  
     <tr>
     <% if reservation.user_id==current_user.id and reservation.confirmed==1%>  
+    <% @counter1+=1 %>  
       <% @current_book=Book.where(:id => reservation.book_id) %>  
       <div class="row">
         <div class="col"> <li>Titolo: <%= @current_book[0][:title] %> </div>
@@ -46,16 +48,21 @@
     <% end %>
     </tr>
   <% end %>
+  <%if @counter1==0 %>
+    <div class="col"> Nessun libro prenotato.. </div>
+  <%end%>
   </table>
   </div>
   <br><hr><br>
 
-  <b>Booking requests:</b>
+  <b>Richieste in sospeso:</b>
   <div class="section clearfix" style="background-color: #f8f9fa;">
   <table>
+  <% @counter2=0 %>  
   <% @reservation.each do |reservation| %>  
     <tr>
     <% if reservation.user_id==current_user.id and reservation.confirmed==0%>  
+    <% @counter2+=1 %>  
       <% @current_book=Book.where(:id => reservation.book_id) %>  
       <div class="row">
         <div class="col"><li> Titolo: <%= @current_book[0][:title] %> </div>
@@ -67,6 +74,9 @@
     <% end %>
     </tr>
   <% end %>
+  <%if @counter2==0 %>
+    <div class="col"> Nessuna richiesta in sospeso.. </div>
+  <%end%>
   </table>
   </div>
   <br><hr><br>
@@ -74,9 +84,11 @@
   <b>Rejected requests:</b>
   <div class="section clearfix" style="background-color: #f8f9fa;">
   <table>
+  <% @counter3=0 %>
   <% @reservation.each do |reservation| %>  
     <tr>
-    <% if reservation.user_id==current_user.id and reservation.confirmed==2%>  
+    <% if reservation.user_id==current_user.id and reservation.confirmed==2%>
+      <% @counter3+=1 %>  
       <% @current_book=Book.where(:id => reservation.book_id) %>  
       <div class="row"> 
         <div class="col"><li> Titolo: <%= @current_book[0][:title] %> </div>
@@ -87,6 +99,9 @@
     </tr>
     <%end%>
   <% end %>
+  <%if @counter3==0 %>
+    <div class="col"> Nessuna richiesta rifiutata.. </div>
+  <%end%>
   </table>
   </div>
   <br><br>
