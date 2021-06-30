@@ -32,15 +32,15 @@
   <table>
   <% @book.each do |book| %>  
     <tr>
-    
     <% @current_book=Reservation.where(:book_id => book.id) %>  
     <% if @current_book.length==0 or @current_book[0][:confirmed]!=1 and book.owner==current_user.id%>  
       <div class="row">
-        <div class="col"> Titolo: <%= book.title %> </div>
+        <div class="col"> <li>Titolo: <%= book.title %> </div>
+        <div class="col"><%= button_to book_path(book.id), class: 'btn bg-transparent', method: :get do%><i class="fa fa-info-circle fa-lg"></i><%end%></li></div>
       </div>
     <% end %>
     </tr>
-    <br><br>
+    <br>
   <% end %>
   <br>
   </table>
@@ -53,9 +53,11 @@
     <% @current_book=Book.where(:id => reservation.book_id) %>
     <% if @current_book[0][:owner]==current_user.id and reservation.confirmed==1%>  
       <div class="row">
-        <div class="col"> Titolo: <%= @current_book[0][:title] %> </div>
+        <div class="col"> <li>Titolo: <%= @current_book[0][:title] %> </div>
         <div class="col"> Da: <%= User.find(@current_book[0][:owner]).username %> </div>
-        <div class="col">Note: <%= reservation.comments %> </div>
+        <% if reservation.comments!=nil %>
+          <div class="col">Note: <%= reservation.comments %> </div>
+        <% end %></li>
       </div>
     <% end %>
     </tr>
@@ -74,9 +76,9 @@
     <% @current_book=Book.where(:id => reservation.book_id) %>
     <% if @current_book[0][:owner]==current_user.id and reservation.confirmed==0%>  
       <div class="row">
-        <div class="col"> Titolo: <%= @current_book[0][:title] %> </div>
+        <div class="col"> <li> Titolo: <%= @current_book[0][:title] %> </div>
         <div class="col"> Da: <%= User.find(@current_book[0][:owner]).username %>  </div>
-        <div class="col">Note: <%= reservation.comments %> </div>
+        <div class="col">Note: <%= reservation.comments %> </li></div>
         <div class="col"> <%= button_to 'Accept', is_confirmed_reservation_path(reservation) , :method => :put, class: "btn btn-success"%></div>
         <div class="col"> <%= button_to 'Decline', is_deleted_reservation_path(reservation) , :method => :put, class: "btn btn-danger" %></div>
       </div>
