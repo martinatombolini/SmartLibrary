@@ -28,7 +28,7 @@
   <%= button_to 'Add a book', new_book_path, method: :get, class: "btn btn-outline-dark"%>
 
   <br><br>
-  <b>Libri disponibili:</b><br>
+  <b>Available books:</b><br>
   <div class="section clearfix" style="background-color: #f8f9fa;">
   <table>
   <% @counter1=0 %>
@@ -38,21 +38,21 @@
     <% if @current_book.length==0 or @current_book[0][:confirmed]!=1 and book.owner==current_user.id%>
       <% @counter1+=1 %>
       <div class="row">
-        <div class="col"> <li>Titolo: <%= book.title %> </div>
+        <div class="col"> <li>Title: <%= book.title %> </div>
         <div class="col"><%= button_to book_path(book.id), class: 'btn bg-transparent', method: :get do%><i class="fa fa-info-circle fa-lg"></i><%end%></li></div>
       </div>
     <% end %>
     </tr>
   <% end %>
   <%if @counter1==0 %>
-    <div class="col"> Nessun libro disponibile.. </div>
+    <div class="col"> No available book  yet.. </div>
   <%end%>
   <br>
   </table>
   </div>
   <br><hr><br>
 
-  <b>Libri in prestito:</b>
+  <b>Borrowed books:</b>
   <div class="section clearfix" style="background-color: #f8f9fa;">
   <table>
   <% @counter2=0 %>
@@ -62,10 +62,10 @@
     <% if @current_book[0][:owner]==current_user.id and reservation.confirmed==1%>  
       <% @counter2+=1 %>
       <div class="row">
-        <div class="col"> <li>Titolo: <%= @current_book[0][:title] %> </div>
-        <div class="col"> Da: <%= User.find(@current_book[0][:owner]).username %> </div>
+        <div class="col"> <li>Title: <%= @current_book[0][:title] %> </div>
+        <div class="col"> By: <%= User.find(@current_book[0][:owner]).username %> </div>
         <% if reservation.comments!="" %>
-          <div class="col">Note: <%= reservation.comments %> </div>
+          <div class="col">Notes: <%= reservation.comments %> </div>
         <% end %>
         <div class="col"><%= button_to book_path(@current_book[0][:id]), class: 'btn bg-transparent', method: :get do%><i class="fa fa-info-circle fa-lg"></i><%end%></li></div></li>
       </div>
@@ -73,7 +73,7 @@
     </tr>
   <% end %>
   <%if @counter2==0 %>
-    <div class="col"> Nessun libro in prestito.. </div>
+    <div class="col"> No borrowed book  yet.. </div>
   <%end%>
   <br>
   </table>
@@ -81,7 +81,7 @@
   <br><hr><br>
 
 
-  <b>Richieste in sospeso:</b>
+  <b>Pending requests:</b>
   <tr>
   <div class="section clearfix" style="background-color: #f8f9fa;">
   <table>
@@ -92,10 +92,10 @@
     <% if @current_book[0][:owner]==current_user.id and reservation.confirmed==0%>
       <% @counter3+=1 %>
       <div class="row">
-        <div class="col"> <li> Titolo: <%= @current_book[0][:title] %> </div>
-        <div class="col"> Da: <%= User.find(@current_book[0][:owner]).username %>  </div>
+        <div class="col"> <li> Title: <%= @current_book[0][:title] %> </div>
+        <div class="col"> By: <%= User.find(@current_book[0][:owner]).username %>  </div>
          <% if reservation.comments!="" %>
-          <div class="col">Note: <%= reservation.comments %> </div>
+          <div class="col">From: <%= reservation.comments %> </div>
         <% end %>
         <div class="col"> <%= button_to 'Accept', is_confirmed_reservation_path(reservation) , :method => :put, class: "btn btn-success"%></div>
         <div class="col"> <%= button_to 'Decline', is_deleted_reservation_path(reservation) , :method => :put, class: "btn btn-danger" %></div>
@@ -104,7 +104,7 @@
     </tr>
   <% end %>
   <%if @counter3==0 %>
-      <div class="col"> Nessuna prenotazione in sospeso.. </div>
+      <div class="col"> No pending request yet.. </div>
     <%end%>
   <br>
   </table>

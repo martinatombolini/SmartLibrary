@@ -1,4 +1,13 @@
 <%= render 'devise/navbar' %>
+<div class="container">
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-primary" role="alert" width="60%">
+        Notification: <%= msg %>
+      </div>
+    <% end %>
+</div>
+<br>
+
 <div align="center" class="container" style="width: 50%">
 <h2>Log in</h2>
 
