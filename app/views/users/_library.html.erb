@@ -28,7 +28,8 @@
   <%= button_to 'Add a book', new_book_path, method: :get, class: "btn btn-outline-dark"%>
 
   <br><br>
-  <b>Available books:</b>
+  <b>Available books:</b><br>
+  <div class="section clearfix" style="background-color: #9fa6ac1f;">
   <table>
   <% @book.each do |book| %>  
     <tr>
@@ -40,13 +41,14 @@
       </div>
     <% end %>
     </tr>
-    <br>
   <% end %>
   <br>
   </table>
+  </div>
   <br><hr><br>
 
   <b>Borrowed books:</b>
+  <div class="section clearfix" style="background-color: #9fa6ac1f;">
   <table>
   <% @reservation.each do |reservation| %>  
     <tr>
@@ -65,11 +67,13 @@
   <% end %>
   <br>
   </table>
+  </div>
   <br><hr><br>
 
 
   <b>Pending requests:</b>
   <tr>
+  <div class="section clearfix" style="background-color: #9fa6ac1f;">
   <table>
   <% @reservation.each do |reservation| %>  
     <tr>
@@ -88,3 +92,4 @@
   <% end %>
   <br>
   </table>
+</div>

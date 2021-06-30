@@ -28,48 +28,54 @@
 
   <br><br>
   <b>Reserved books:</b>
+  <div class="section clearfix" style="background-color: #9fa6ac1f;">
   <table>
   <% @reservation.each do |reservation| %>  
     <tr>
     <% if reservation.user_id==current_user.id and reservation.confirmed==1%>  
       <% @current_book=Book.where(:id => reservation.book_id) %>  
       <div class="row">
-        <div class="col"> Titolo: <%= @current_book[0][:title] %> </div>
+        <div class="col"> <li>Titolo: <%= @current_book[0][:title] %> </div>
         <div class="col">Note: <%= reservation.comments %> </div>
-        <div class="col"> <%= button_to 'Delete', reservation, method: :delete, class: 'btn btn-danger' %> </div>
+        <div class="col"> <%= button_to 'Delete', reservation, method: :delete, class: 'btn btn-danger' %> </li></div>
     <% end %>
     </tr>
   <% end %>
   </table>
+  </div>
   <br><hr><br>
 
   <b>Booking requests:</b>
+  <div class="section clearfix" style="background-color: #9fa6ac1f;">
   <table>
   <% @reservation.each do |reservation| %>  
     <tr>
     <% if reservation.user_id==current_user.id and reservation.confirmed==0%>  
       <% @current_book=Book.where(:id => reservation.book_id) %>  
       <div class="row">
-        <div class="col"> Titolo: <%= @current_book[0][:title] %> </div>
+        <div class="col"><li> Titolo: <%= @current_book[0][:title] %> </div>
         <div class="col">Note: <%= reservation.comments %> </div>
-        <div class="col"> <%= button_to 'Cancel', reservation, method: :delete, class: 'btn btn-danger' %> </div>
+        <div class="col"> <%= button_to 'Cancel', reservation, method: :delete, class: 'btn btn-danger' %> </li></div>
     <% end %>
     </tr>
   <% end %>
   </table>
+  </div>
   <br><hr><br>
 
   <b>Rejected requests:</b>
+  <div class="section clearfix" style="background-color: #9fa6ac1f;">
   <table>
   <% @reservation.each do |reservation| %>  
     <tr>
     <% if reservation.user_id==current_user.id and reservation.confirmed==2%>  
       <% @current_book=Book.where(:id => reservation.book_id) %>  
       <div class="row"> 
-        <div class="col"> Titolo: <%= @current_book[0][:title] %> </div>
-        <div class="col">Note: <%= reservation.comments %> </div>
+        <div class="col"><li> Titolo: <%= @current_book[0][:title] %> </div>
+        <div class="col">Note: <%= reservation.comments %> </li></div>
     </tr>
     <%end%>
   <% end %>
   </table>
+  </div>
   <br><br>
