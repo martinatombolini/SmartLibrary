@@ -4,7 +4,7 @@ Feature: User can login to the system
   I want to log in the system
 
 Scenario: Login success
-  Given I am a registered reader
+  Given I am a registered user
   When I am on the login page
   And I fill in "Email" with "simona.lai@gmail.com"
   And I fill in "Password" with "123456"
