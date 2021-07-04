@@ -4,7 +4,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.0'
 
 gem 'haml'
-gem 'rexml'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'omniauth', '~>1.9.1'

@@ -8,12 +8,12 @@ Scenario: Login success
   When I am on the login page
   And I fill in "Email" with "simona.lai@gmail.com"
   And I fill in "Password" with "123456"
-  And I press "Login"
-  Then I should be on the reader profile page
+  And I press "Log in"
+  Then I should be on the profile page
 
 Scenario: Login failed
   Given I am on the login page
   When I fill in "Email" with "pippoplutopaperino@gmail.com"
   And I fill in "Password" with "123456"
-  And I press "Login"
+  And I press "Log in"
   Then I should see "Notification: Invalid Email or password."
