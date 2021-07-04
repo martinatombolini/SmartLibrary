@@ -7,7 +7,6 @@ Scenario: Create a new book
 	Given I am a Library
 	When I visit the profile page
     And I press "Add a book"
-	When I press "Create Book"
 	And I fill in "Title" with "Title"
 	And I fill in "Author" with "Author"
     And I fill in "Notes" with "Notes"
