@@ -37,7 +37,7 @@ class BooksController < ApplicationController
     end
 
     def update
-        authorize! :destroy, Book, message: "You are not authorized"
+        authorize! :update, Book, message: "You are not authorized"
         @book = Book.find(params[:id])
         @book.owner=current_user.id
        

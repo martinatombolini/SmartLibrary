@@ -1,0 +1,7 @@
+library: 
+  email: prova1@gmail.com
+  roles_mask: 1
+
+reader: 
+  email: test@gmail.com
+  roles_mask: 2
