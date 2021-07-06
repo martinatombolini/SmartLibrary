@@ -4,7 +4,13 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-      
-    <a class="navbar-brand" href="/"><span aria-hidden="true">&laquo;</span>Back to homepage</a>
+     <div class="row"> 
+      <div class="col">
+      <i class="fa fa-arrow-circle-left fa-2x"></i>
+      </div>
+      <div class="col">
+      <%= button_to " Back to homepage", root_path, :method => :get, class: "btn"%>
+      </div>
+    </div>
   </div>
 </nav>
