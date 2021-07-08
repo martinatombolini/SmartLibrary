@@ -40,7 +40,11 @@
 
         %p
           %strong Location:
-          =User.find(@book.owner).address
+          =User.find(@book.owner).address+", "+User.find(@book.owner).city
+          
+
+        %p 
+          %iframe{:allowfullscreen => "", :height => "350", :loading => "lazy", :src => "https://www.google.com/maps/embed/v1/place?key=AIzaSyDm3kA0H6nEx18Xux8n-pWMtUVKupJNiIU&q="+User.find(@book.owner).address+","+User.find(@book.owner).city+",IT", :style => "border:0", :width => "90%"}
           
 
         .container 
@@ -70,3 +74,5 @@
                 = button_to 'Ask reservation', new_book_reservations_path(@book), class: "btn btn-primary", :method => :get
         
         %br
+
+

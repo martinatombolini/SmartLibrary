@@ -6,10 +6,7 @@
     <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
      <div class="row"> 
       <div class="col">
-      <i class="fa fa-arrow-circle-left fa-2x"></i>
-      </div>
-      <div class="col">
-      <%= button_to " Back to homepage", root_path, :method => :get, class: "btn"%>
+      <%= button_to root_path, :method => :get, class: "btn" do%><i class="fa fa-arrow-circle-left fa-2x"></i>&emsp; Back to homepage<%end%>
       </div>
     </div>
   </div>

@@ -28,10 +28,11 @@
                 %ul.dropdown-menu{"aria-labelledby" => "navbarDropdown"}
                   %li
                     %a.dropdown-item
-                      = link_to 'Profile', current_user
+                      = button_to 'Profile', current_user, method: :get, class: "btn"
+                  %hr
                   %li
                     %a.dropdown-item
-                      = link_to 'Logout', destroy_user_session_path, method: :delete
+                      = button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn"
             
 
       %form.d-flex{:action => "/search"}

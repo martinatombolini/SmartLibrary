@@ -12,18 +12,15 @@
       Account
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><%= link_to 'Profile', current_user%></li>
-        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+        <li><%= button_to 'Profile', current_user, method: :get, class: "btn"%></li><hr>
+        <li><%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn"%></li>
       </ul>
       </div>
 
     </div>
     <div class="row">
     <div class="col">
-    <i class="fa fa-arrow-circle-left fa-2x"></i>
-    </div>
-    <div class="col">
-    <%= button_to " Back to homepage", root_path, :method => :get, class: "btn"%>
+    <%= button_to root_path, :method => :get, class: "btn" do%><i class="fa fa-arrow-circle-left fa-2x"></i>&emsp; Back to homepage<%end%>
     </div>
     </div>
   </div>

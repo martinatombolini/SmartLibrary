@@ -31,12 +31,13 @@
                 <ul aria-labelledby="navbarDropdown" class="dropdown-menu">
                   <li>
                     <a class="dropdown-item">
-                      <%= link_to 'Profile', current_user %>
+                      <%= button_to 'Profile', current_user, method: :get, class: "btn"%>
                     </a>
                   </li>
+                  <hr>
                   <li>
                     <a class="dropdown-item">
-                      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+                      <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn" %>
                     </a>
                   </li>
                 </ul>
@@ -47,7 +48,6 @@
       </ul>
       
     </div>
-    <i class="fa fa-arrow-circle-left fa-2x"></i>
-    <%= button_to " Back to homepage", root_path, :method => :get, class: "btn"%>
+    <%= button_to root_path, :method => :get, class: "btn" do%><i class="fa fa-arrow-circle-left fa-2x"></i>&emsp; Back to homepage<%end%>
   </div>
 </nav>
