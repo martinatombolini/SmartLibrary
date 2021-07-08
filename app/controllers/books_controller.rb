@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
 
     before_action :authenticate_user!, except: [:index,:search]
-    before_action :check_owner, except: [:index, :search, :create, :new]
+    before_action :check_owner, only: [:edit, :destroy, :update]
 
     def index
         @books = Book.all
