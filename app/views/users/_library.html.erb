@@ -67,6 +67,7 @@
         <% if reservation.comments!="" %>
           <div class="col">Notes: <%= reservation.comments %> </div>
         <% end %>
+        <div class="col"> <%= button_to 'Set as available', reservation, method: :delete, class: 'btn btn-danger' %> </li></div>
         <div class="col"><%= button_to book_path(@current_book[0][:id]), class: 'btn bg-transparent', method: :get do%><i class="fa fa-info-circle fa-lg"></i><%end%></li></div></li>
       </div>
     <% end %>
