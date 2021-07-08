@@ -61,7 +61,7 @@ class User < ApplicationRecord
   end
 
 
-  validates :address, presence: true, if: :check_role?
+  validates :address, :city, presence: true, if: :check_role?
 
   def check_role?
     roles_mask==1
