@@ -59,4 +59,12 @@ class User < ApplicationRecord
     self.roles_mask = (self.roles_mask & 1)
     self.save
   end
+
+
+  validates :address, presence: true, if: :check_role?
+
+  def check_role?
+    roles_mask==1
+  end
+
 end
