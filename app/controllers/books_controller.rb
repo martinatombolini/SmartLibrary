@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
 
     before_action :authenticate_user!, except: [:index,:search]
+    before_action :check_owner, only: [:edit, :destroy, :update]
 
     def index
         @books = Book.all
@@ -65,4 +66,12 @@ class BooksController < ApplicationController
         def book_params
             params.require(:book).permit(:title, :author, :notes, :isbn, :owner=>current_user.id)
         end
+
+    def check_owner
+        @book = Book.find(params[:id])
+        if current_user.id!=@book.owner
+            redirect_to root_path
+        end
+    end
+    
 end

@@ -2,22 +2,25 @@
 <br>
 
 <div class="container">
-<h1> Results found: </h1>
-<br>
+<% if @books.length!=0 %>
+  <h1> Results found: </h1>
+  <br>
 
 
-<% @books.each do |book| %>
-  <div class= "row">
-    <div class="col-3">
-      Title:
-      <%= book.title %>
-    </div>
-    <div class="col">
-      <%= button_to 'Show details', book_path(book), :method => :get, class:"btn btn-primary"%>
-    </div>
+  <% @books.each do |book| %>
+    <div class= "row">
+      <div class="col-3">
+        Title:
+        <%= book.title %>
+      </div>
+      <div class="col">
+        <%= button_to 'Show details', book_path(book), :method => :get, class:"btn btn-primary"%>
+      </div>
     
-  </div>
-  <br><br>
-
+    </div>
+    <br><br>
+  <% end %>  
+<% else %>
+<h1> No results found. </h1>
 <% end %>
 </div>

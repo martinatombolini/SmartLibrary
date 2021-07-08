@@ -80,3 +80,9 @@ end
 Given('I should not see {string}') do |string|
     page.has_no_text?(string)
 end
+
+  
+Then('I should be on the search page') do
+    current_path= URI.parse(current_url).path
+    current_path=="search"
+end
