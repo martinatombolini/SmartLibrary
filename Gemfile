@@ -5,7 +5,6 @@ ruby '3.0.0'
 
 gem 'haml'
 gem 'devise'
-gem 'omniauth-facebook'
 gem 'omniauth', '~>1.9.1'
 gem 'omniauth-google-oauth2'
 gem 'canard', '~> 0.6.2.pre'
