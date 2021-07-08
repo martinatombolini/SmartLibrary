@@ -39,6 +39,13 @@
   </div>
   <br>
 
+   <div class="field">
+    <%= f.label :city %>
+    <em>(required if you are a library)</em><br />
+    <%= f.text_field :city, autofocus: false, autocomplete: "city", class:"form-control"%>
+  </div>
+  <br>
+
   <div class="actions">
     <%= f.submit "Update", class:"btn btn-outline-dark" %>
   </div>
