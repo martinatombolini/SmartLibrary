@@ -65,7 +65,7 @@
       <% @counter2+=1 %>
       <div class="row">
         <div class="col"> <li>Title: <%= @current_book[0][:title] %> </div>
-        <div class="col"> Requested by: <%= User.find(@current_book[0][:owner]).username %> </div>
+        <div class="col"> Requested by: <%= User.find(reservation[:user_id]).username %> </div>
         <% if reservation.comments!="" %>
           <div class="col">Notes: <%= reservation.comments %> </div>
         <% end %>
@@ -96,7 +96,7 @@
       <% @counter3+=1 %>
       <div class="row">
         <div class="col"> <li> Title: <%= @current_book[0][:title] %> </div>
-        <div class="col"> Requested by: <%= User.find(@current_book[0][:owner]).username %>  </div>
+        <div class="col"> Requested by: <%= User.find(reservation[:user_id]).username %>  </div>
          <% if reservation.comments!="" %>
           <div class="col">Notes: <%= reservation.comments %> </div>
         <% end %>
