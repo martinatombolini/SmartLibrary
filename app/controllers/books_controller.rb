@@ -50,7 +50,7 @@ class BooksController < ApplicationController
     end
 
     def destroy
-        authorize! :destroy, Book, message: "You are not authorized"
+        authorize! :destroy, Reservation, message: "You are not authorized"
         @book = Book.find(params[:id])
         if Reservation.where(:book_id => @book.id).length!=0
             @book.reservations.destroy_all()
