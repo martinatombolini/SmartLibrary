@@ -15,7 +15,7 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
-    authorize! :destroy, Book, message: "You are not authorized!"
+    authorize! :destroy, Reservation, message: "You are not authorized!"
     @reservation = Reservation.find(params[:id])
     @reservation.destroy
     redirect_to current_user

@@ -1,5 +1,7 @@
 library: 
   email: prova1@gmail.com
+  address: via roma 
+  city: roma
   roles_mask: 1
 
 reader: 

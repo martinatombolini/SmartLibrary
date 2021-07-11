@@ -11,7 +11,7 @@ Given ("I am a Reader") do
 end  
 
 Given ("I am a Library") do
-    @user = User.create!({:username => "simonalai", :email => "simona.lai@gmail.com", :password => "10101010", :password_confirmation => "10101010", :roles_mask => 1})
+    @user = User.create!({:username => "simonalai", :email => "simona.lai@gmail.com", :address => "via roma", :city => "roma",:password => "10101010", :password_confirmation => "10101010", :roles_mask => 1})
     visit new_user_session_path
     fill_in "Email", :with => @user.email
     fill_in "Password", :with => @user.password
