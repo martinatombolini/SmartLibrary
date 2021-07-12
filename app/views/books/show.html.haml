@@ -30,11 +30,16 @@
 
         %p
           %strong Status:
-          -if Reservation.where(:user_id => current_user.id, :book_id => @book.id).length==0
+          -if Reservation.where(:book_id => @book.id).length==0
             ="available"
-          -if Reservation.where(:user_id => current_user.id, :book_id => @book.id).length!=0
-            -if Reservation.where(:user_id => current_user.id, :book_id => @book.id)[0][:confirmed]==1
-              = "borrowed"
+          -if Reservation.where(:book_id => @book.id).length!=0
+            -@reservations=Reservation.where(:book_id => @book.id)
+            -@counter=0
+            -@reservations.each do |reservations|
+              -if reservations.confirmed==1
+                -@counter=1
+            -if @counter==1
+              ="borrowed"
             -else
               ="available"
 
