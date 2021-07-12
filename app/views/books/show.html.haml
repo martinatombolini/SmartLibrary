@@ -75,6 +75,8 @@
               -if @current_reservation.length!=0
                 -if @current_reservation[0][:confirmed]!=2
                   = button_to 'Cancel reservation request', reservation_path(@current_reservation[0][:id]), method: :delete, class: 'btn btn-danger'
+                -else
+                  = button_to 'Ask reservation', new_book_reservations_path(@book), class: "btn btn-primary", :method => :get
               -else
                 = button_to 'Ask reservation', new_book_reservations_path(@book), class: "btn btn-primary", :method => :get
         
