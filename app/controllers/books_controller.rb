@@ -59,7 +59,7 @@ class BooksController < ApplicationController
             @book.destroy
         end
 
-        redirect_to books_path
+        redirect_to current_user
     end
 
     private
