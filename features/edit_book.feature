@@ -1,7 +1,7 @@
 Feature: Library can edit a book
 	As a Library
 	I want to edit a book
-	So that I can SEE THE EDITED POST ON THE BLOG PAGE
+	So that I can SEE THE EDITED BOOK ON THE HOMEPAGE
 
 Scenario: Can edit a post
     Given I am a Library
@@ -9,7 +9,7 @@ Scenario: Can edit a post
 	And I am the owner of the book
 	And I am on the book index page
 	When I click "Edit"
-	Then I should be on the post edit page
+	Then I should be on the book edit page
 	And I fill in "Title" with "New title"
 	And I fill in "Author" with "Author"
     And I fill in "Notes" with "Notes"

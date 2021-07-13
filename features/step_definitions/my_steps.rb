@@ -64,7 +64,7 @@ Given('I am the owner of the book') do
     expect(@user.id).to be == @book.owner
 end
   
-Then('I should be on the post edit page') do
+Then('I should be on the book edit page') do
     current_path= URI.parse(current_url).path
     current_path=="/books/:id/edit"
 end
